@@ -168,31 +168,33 @@ const createScene = (count: number): Scene => {
         rangeRandom(0, canvas.width),
         rangeRandom(0, canvas.height)
       ],
-      velocity: mult(circleRandom(), rangeRandom(4.0, 16.0))
+      velocity: mult(circleRandom(), rangeRandom(4.0, 32.0))
     });
   }
   return scene;
 };
 
 const updateScene = (scene: Scene, dt: number): void => {
+  const MARGIN = 128.0;
+  const MARGIN2 = MARGIN * 2.0;
   scene.forEach(body => {
     body.position = add(body.position, mult(body.velocity, dt));
-    if (body.position[0] < -64.0) {
-      body.position[0] += canvas.width + 64.0;
+    if (body.position[0] < -MARGIN) {
+      body.position[0] += (canvas.width + MARGIN2);
     }
-    if (body.position[0] >= canvas.width + 64.0) {
-      body.position[0] -= canvas.width - 64.0;
+    if (body.position[0] >= canvas.width + MARGIN) {
+      body.position[0] -= (canvas.width + MARGIN2);
     }
-    if (body.position[1] < -64.0) {
-      body.position[1] += canvas.height + 64.0;
+    if (body.position[1] < -MARGIN) {
+      body.position[1] += (canvas.height + MARGIN2);
     }
-    if (body.position[1] >= canvas.height + 64.0) {
-      body.position[1] -= canvas.height - 64.0;
+    if (body.position[1] >= canvas.height + MARGIN) {
+      body.position[1] -= (canvas.height + MARGIN2);
     }
   });
 };
 
-const scene: Scene = createScene(128);
+const scene: Scene = createScene(256);
 let lastFrameTime = Date.now();
 let dt = 0.0;
 
