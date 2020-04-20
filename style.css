@@ -1,0 +1,16 @@
+* {
+  font-family: Lato;
+  font-size: 14px;
+  color: #444;
+}
+
+
+#container {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+  display: block;
+  margin: 0 auto;
+  border: 1px dashed #ddd;
+}
+
